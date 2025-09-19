@@ -1,0 +1,544 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&family=Ubuntu:wght@400;500;700&display=swap");
+
+/* ========================================
+   1. GLOBAL STYLES & CSS VARIABLES (DARK THEME)
+   ======================================== */
+
+:root {
+  /* Color Palette */
+  --background-color: #121212; /* Very dark grey */
+  --surface-color: #1E1E1E;   /* Lighter dark grey for cards/surfaces */
+  --accent-primary: #FFBF00;   /* Gold/Amber for main actions */
+  --accent-secondary: #6A5ACD; /* Slate Blue for secondary highlights */
+  --text-primary: #f0f2f5;     /* Off-white for primary text */
+  --text-secondary: #a8a8a8;   /* Light grey for muted text */
+  --border-color: #333;
+
+  /* Typography */
+  --font-primary: "Poppins", sans-serif;
+  --font-secondary: "Ubuntu", sans-serif;
+
+  /* UI Elements */
+  --border-radius: 6px;
+  --transition-speed: 0.3s ease;
+  --box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--background-color);
+  font-family: var(--font-primary);
+  color: var(--text-primary);
+}
+
+/* Reusable Components */
+.max-width {
+  max-width: 1300px;
+  padding: 0 80px;
+  margin: 0 auto;
+}
+
+section {
+  padding: 100px 0;
+}
+
+.section-title {
+  position: relative;
+  text-align: center;
+  font-size: 40px;
+  font-weight: 600;
+  margin-bottom: 60px;
+  padding-bottom: 20px;
+  font-family: var(--font-secondary);
+}
+
+.section-title::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 180px;
+  height: 3px;
+  background: var(--accent-primary);
+  transform: translateX(-50%);
+}
+
+/* ========================================
+   2. NAVBAR
+   ======================================== */
+
+.navbar {
+  position: fixed;
+  width: 100%;
+  padding: 30px 0;
+  font-family: var(--font-secondary);
+  transition: all var(--transition-speed);
+  z-index: 999;
+}
+
+.navbar.sticky {
+  padding: 15px 0;
+  background: var(--surface-color);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.navbar .max-width {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.navbar .logo a {
+  color: var(--text-primary);
+  font-size: 35px;
+  font-weight: 600;
+}
+
+.navbar .logo a span {
+  color: var(--accent-primary);
+  transition: color var(--transition-speed);
+}
+
+.navbar .menu li {
+  list-style: none;
+  display: inline-block;
+}
+
+.navbar .menu li a {
+  display: block;
+  color: var(--text-primary);
+  font-size: 18px;
+  font-weight: 500;
+  margin-left: 25px;
+  transition: color var(--transition-speed);
+}
+
+.navbar .menu li a:hover {
+  color: var(--accent-primary);
+}
+
+.menu-btn {
+  color: var(--text-primary);
+  font-size: 23px;
+  cursor: pointer;
+  display: none;
+}
+
+/* ========================================
+   3. HOME (HERO) SECTION
+   ======================================== */
+
+.home {
+  display: flex;
+  background: url("images/banneer.jpeg") no-repeat center;
+  background-size: cover;
+  height: 100vh;
+  color: var(--text-primary);
+  min-height: 500px;
+  position: relative;
+  font-family: var(--font-secondary);
+}
+
+.home::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.home .max-width {
+  width: 100%;
+  justify-content: center; /* This horizontally centers the content block */
+  position: relative;
+  z-index: 1;
+}
+.home .home-content {
+    text-align: center; /* This centers the text within the block */
+}
+
+.home .home-content .text-1 { font-size: 27px; }
+.home .home-content .text-2 { font-size: 75px; font-weight: 600; margin-left: -3px; }
+.home .home-content .text-3 { font-size: 40px; margin: 5px 0; }
+.home .home-content .text-3 span { color: var(--accent-primary); font-weight: 500; }
+
+/* ========================================
+   4. ABOUT SECTION
+   ======================================== */
+
+.about .about-content {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+}
+
+.about .about-content .left { width: 45%; }
+.about .about-content .left img {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+  border-radius: var(--border-radius);
+  border: 2px solid var(--border-color);
+}
+.about .about-content .right { width: 50%; }
+.about .about-content .right .text { font-size: 25px; font-weight: 600; margin-bottom: 10px; }
+.about .about-content .right .text span { color: var(--accent-primary); }
+.about .about-content .right p,
+.about .about-content .right ul { text-align: justify; line-height: 1.6; color: var(--text-secondary); }
+.about .about-content .right ul { list-style: none; margin-top: 10px;}
+
+.about .about-content .right a {
+  display: inline-block;
+  background: var(--accent-primary);
+  color: var(--background-color);
+  font-size: 20px;
+  font-weight: 600;
+  padding: 10px 30px;
+  margin-top: 20px;
+  border-radius: var(--border-radius);
+  border: 2px solid var(--accent-primary);
+  transition: background-color var(--transition-speed), color var(--transition-speed);
+}
+
+.about .about-content .right a:hover {
+  background: transparent;
+  color: var(--accent-primary);
+}
+
+/* ========================================
+   5. SKILLS SECTION
+   ======================================== */
+
+.skills { background: var(--surface-color); }
+.skills .skills-content { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 50px; }
+.skills .column { width: calc(50% - 25px); }
+.skills .column .text { font-size: 20px; font-weight: 600; margin-bottom: 10px; color: var(--accent-primary); }
+.skills .column p { text-align: justify; line-height: 1.6; color: var(--text-secondary); }
+.skills .bars { margin-top: 15px; }
+.skills .bars .info { display: flex; margin-bottom: 5px; align-items: center; justify-content: space-between; }
+.skills .bars .info span { font-weight: 500; font-size: 17px; text-decoration: none; }
+.skills .bars .line { height: 5px; width: 100%; background: var(--border-color); position: relative; border-radius: 3px; margin-bottom: 15px; }
+.skills .bars .line::before { content: ""; position: absolute; height: 100%; left: 0; top: 0; background: var(--accent-secondary); border-radius: 3px; }
+
+/* Skill percentages */
+.skills .bars .line.html::before { width: 90%; }
+.skills .bars .line.css::before { width: 85%; }
+.skills .bars .line.js::before { width: 80%; }
+.skills .bars .line.react::before { width: 75%; }
+.skills .bars .line.node::before { width: 70%; }
+.skills .bars .line.mongo::before { width: 65%; }
+
+/* ========================================
+   6. EDUCATION SECTION (NEW TIMELINE DESIGN)
+   ======================================== */
+.education { background: var(--background-color); }
+
+.timeline {
+  position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* The vertical line */
+.timeline::after {
+  content: '';
+  position: absolute;
+  width: 3px;
+  background-color: var(--surface-color);
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  margin-left: -1.5px;
+}
+
+.timeline-item {
+  padding: 10px 40px;
+  position: relative;
+  background-color: inherit;
+  width: 50%;
+}
+
+/* The dot on the timeline */
+.timeline-item .timeline-dot {
+  content: '';
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  right: -8.5px;
+  background-color: var(--background-color);
+  border: 3px solid var(--accent-primary);
+  top: 25px;
+  border-radius: 50%;
+  z-index: 1;
+}
+
+/* Position containers to the left */
+.timeline-item:nth-child(odd) {
+  left: 0;
+  padding-right: 30px;
+}
+
+/* Position containers to the right */
+.timeline-item:nth-child(even) {
+  left: 50%;
+  padding-left: 30px;
+}
+
+/* Fix the dot position for right-sided items */
+.timeline-item:nth-child(even) .timeline-dot {
+  left: -6.5px;
+}
+
+/* Content box styling */
+.timeline-content {
+  padding: 20px 30px;
+  background-color: var(--surface-color);
+  position: relative;
+  border-radius: var(--border-radius);
+  border: 1px solid var(--border-color);
+}
+.timeline-content h3 {
+    color: var(--accent-primary);
+    font-size: 20px;
+}
+.timeline-content p {
+    color: var(--text-secondary);
+    font-size: 16px;
+    margin-top: 5px;
+}
+
+.timeline-date {
+    font-family: var(--font-secondary);
+    font-weight: bold;
+    color: var(--accent-secondary);
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+}
+
+.timeline-item:nth-child(odd) .timeline-date {
+    text-align: right;
+    padding-right: 20px;
+}
+.timeline-item:nth-child(even) .timeline-date {
+    text-align: left;
+    padding-left: 20px;
+}
+
+/* ========================================
+   7. PROJECTS SECTION
+   ======================================== */
+.projects { background: var(--surface-color); }
+.projects .carousel .card {
+  background: #2a2a2a;
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  padding: 25px 35px;
+  text-align: center;
+  transition: transform var(--transition-speed), border-color var(--transition-speed);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+.projects .carousel .card:hover {
+  transform: translateY(-10px);
+  border-color: var(--accent-primary);
+}
+.projects .carousel .card .box { display: flex; flex-direction: column; align-items: center; justify-content: center; }
+.projects .carousel .card .text { font-size: 25px; font-weight: 500; margin: 10px 0 7px 0; }
+.projects .carousel .card p { color: var(--text-secondary); margin-bottom: 15px;}
+.projects .carousel .card img {
+  height: 150px;
+  width: 150px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 5px solid var(--accent-secondary);
+  transition: border-color var(--transition-speed);
+}
+.projects .carousel .card:hover img { border-color: var(--accent-primary); }
+.project-link {
+    color: var(--accent-primary);
+    font-weight: 500;
+    text-decoration: none;
+    transition: letter-spacing var(--transition-speed);
+}
+.project-link:hover {
+    letter-spacing: 1px;
+}
+
+/* ========================================
+   8. CONTACT SECTION
+   ======================================== */
+.contact .contact-content { display: flex; flex-wrap: wrap; align-items: flex-start; justify-content: space-between; }
+.contact .column { width: calc(50% - 30px); }
+.contact .left p { text-align: justify; line-height: 1.6; color: var(--text-secondary); }
+.contact .left .icons { margin-top: 20px; }
+.contact .row { display: flex; margin-bottom: 10px; align-items: center; }
+.contact .row .info { margin-left: 20px; }
+.contact .row i { font-size: 25px; width: 25px; text-align: center; color: var(--accent-primary); }
+.contact .info .head { font-weight: 500; }
+.contact .info .sub-title { color: var(--text-secondary); }
+.contact .info .sub-title a { color: var(--text-secondary); transition: color var(--transition-speed); }
+.contact .info .sub-title a:hover { color: var(--accent-primary); text-decoration: underline; }
+.contact .right .text { font-size: 20px; font-weight: 600; margin-bottom: 10px; }
+.contact .right form .fields { display: flex; gap: 15px; }
+.contact .right form .field,
+.contact .right form .fields .field { height: 45px; width: 100%; margin-bottom: 15px; }
+.contact .right form .textarea { height: 80px; width: 100%; margin-bottom: 15px; }
+
+.contact .right form .field input,
+.contact .right form .textarea textarea {
+  height: 100%;
+  width: 100%;
+  background: var(--surface-color);
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+  border-radius: var(--border-radius);
+  outline: none;
+  padding: 0 15px;
+  font-size: 17px;
+  font-family: var(--font-primary);
+  transition: border-color var(--transition-speed);
+}
+.contact .right form .field input:focus,
+.contact .right form .textarea textarea:focus { border-color: var(--accent-primary); }
+.contact .right form .textarea textarea { padding-top: 10px; resize: none; }
+.contact .right form .button-area button {
+  color: var(--background-color);
+  font-weight: 600;
+  width: 160px;
+  height: 45px;
+  outline: none;
+  font-size: 18px;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  border: 2px solid var(--accent-primary);
+  background: var(--accent-primary);
+  transition: background-color var(--transition-speed), color var(--transition-speed);
+}
+
+.contact .right form .button-area button:hover { color: var(--accent-primary); background: none; }
+
+/* ========================================
+   9. FOOTER
+   ======================================== */
+footer {
+  background: var(--surface-color);
+  padding: 20px 23px;
+  color: var(--text-primary);
+  text-align: center;
+  border-top: 1px solid var(--border-color);
+}
+footer h4 {
+    font-size: 20px;
+    margin-bottom: 10px;
+    font-weight: 500;
+}
+footer .ws {
+  display: flex;
+  justify-content: center;
+  gap: 15px; /* Adds space between logos */
+  margin-bottom: 15px;
+}
+footer .ws a img {
+  height: 24px;  /* Control logo size */
+  width: 24px;   /* Control logo size */
+  transition: transform var(--transition-speed);
+}
+footer .ws a:hover img {
+  transform: scale(1.15); /* Subtle hover effect */
+}
+footer .create { margin-top: 10px; }
+footer .create p { color: var(--text-secondary); margin-top: 5px; font-size: 14px;}
+footer span a {
+  color: var(--accent-primary);
+  text-decoration: none;
+}
+footer span a:hover {
+  text-decoration: underline;
+}
+
+/* ========================================
+   10. SCROLL UP & RESPONSIVE STYLES
+   ======================================== */
+.scroll-up-btn {
+  position: fixed;
+  height: 45px;
+  width: 42px;
+  background: var(--accent-primary);
+  right: 30px;
+  bottom: 30px;
+  text-align: center;
+  line-height: 45px;
+  color: var(--background-color);
+  font-weight: bold;
+  z-index: 999;
+  font-size: 30px;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  opacity: 0;
+  pointer-events: none;
+  transition: all var(--transition-speed);
+}
+.scroll-up-btn.show { opacity: 1; pointer-events: auto; }
+.scroll-up-btn:hover { filter: brightness(95%); }
+
+/* Owl Carousel Dots */
+.owl-dots { text-align: center; margin-top: 20px; }
+.owl-dot { height: 13px; width: 13px; margin: 0 5px; outline: none !important; border-radius: 50%; border: 2px solid var(--accent-secondary) !important; transition: all var(--transition-speed); }
+.owl-dot.active { width: 35px; border-radius: 14px; background: var(--accent-primary) !important; border-color: var(--accent-primary) !important; }
+.owl-dot:hover { background: var(--accent-secondary) !important; }
+
+/* Responsive Media Queries */
+@media (max-width: 991px) {
+  .max-width { padding: 0 50px; }
+}
+
+@media (max-width: 947px) {
+  .menu-btn { display: block; z-index: 999; }
+  .navbar .menu { position: fixed; height: 100vh; width: 100%; left: -100%; top: 0; background: var(--surface-color); text-align: center; padding-top: 80px; transition: left var(--transition-speed); }
+  .navbar .menu.active { left: 0; }
+  .navbar .menu li { display: block; }
+  .navbar .menu li a { display: inline-block; margin: 20px 0; font-size: 25px; }
+
+  .home .home-content .text-2 { font-size: 70px; }
+  .home .home-content .text-3 { font-size: 35px; }
+
+  .about .about-content, .skills .skills-content, .contact .contact-content { flex-direction: column; }
+  .about .about-content .left, .about .about-content .right, .skills .column, .contact .column { width: 100%; }
+  .about .about-content .left { margin-bottom: 30px; display: flex; justify-content: center; }
+  .about .about-content .left img { max-width: 400px; }
+  .contact .right form .fields { flex-direction: column; gap: 0; }
+  
+  /* Timeline Responsive */
+  .timeline::after { left: 31px; }
+  .timeline-item { width: 100%; padding-left: 70px; padding-right: 25px; }
+  .timeline-item:nth-child(even) { left: 0; }
+  .timeline-item .timeline-dot, .timeline-item:nth-child(even) .timeline-dot { left: 23px; }
+  .timeline-item:nth-child(odd) .timeline-date, .timeline-item:nth-child(even) .timeline-date { text-align: left; padding-left: 0; }
+}
+
+@media (max-width: 690px) {
+  .max-width { padding: 0 23px; }
+  .home .home-content .text-2 { font-size: 60px; }
+  .home .home-content .text-3 { font-size: 32px; }
+}
+
+@media (max-width: 500px) {
+  .home .home-content .text-2 { font-size: 50px; }
+  .home .home-content .text-3 { font-size: 27px; }
+}
